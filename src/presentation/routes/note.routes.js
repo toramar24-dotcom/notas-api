@@ -20,4 +20,12 @@ const router = Router();
 router.post("/", upload.single('image'), noteController.createNote);
 router.get("/", noteController.getNotesByUserId);
 
+//definir las rutas para las notas  
+//comentado sin seguuridad
+//router.post("/", upload.single('image'), noteController.createNote);
+//router.get("/", noteController.getNotesByUserId);
+
+router.post("/",authMiddleware, upload.single('image'), noteController.createNote);
+router.get("/", authMiddleware, noteController.getNotesByUserId);
+
 export default router;
